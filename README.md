@@ -1,7 +1,9 @@
 # bottleme
 PENDING FEATURES PARA ENTREGA BOOTSTRAP:
--Boton Login menu flotante
--Boton enviar mensaje
+-Color de footer y menu flotante diferente
+-Redactar textos landing page
+-Ajustar estilos (textos de diff tamaño, etc...)
+-Crear backround de papiro(SVG) en el bg del formulario 
 
 PENDING FEATURES:
 -Casilla de seleccionar calendario
@@ -11,3 +13,5 @@ Al contraer el ancho de la pantalla al mínimo, el menú de verticaliza y 'overl
 
 FEATURES IMPLEMENTED:
 -Icono sobre el título
+-Boton Login menu flotante
+-Boton enviar mensaje

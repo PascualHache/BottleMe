@@ -27,6 +27,13 @@
                     <li class="nav-item"><a class="nav-link" href="#colaboradores">Colaboradores</a></li>
                     <li class="nav-item"><a class="nav-link" href="#aboutus">Sobre nosotros</a></li>
                 </ul><!-- navbar-nav -->
+                <div class="login-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Usuario" name="username">
+                        <input type="text" placeholder="Contraseña" name="psw">
+                        <button type="submit">Accede</button>
+                    </form>
+                </div><!--  login input fields-->
             </div><!-- container -->
         </nav>
 
@@ -39,7 +46,7 @@
                     <img class="icon layout-icon" src="img/botella.svg" alt="icon bottle">
 
                 </div>
-                <div class="pb-5">
+                <div class="pb-5 text-center">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt. Nam maximus ipsum dolor, at egestas augue volutpat id. </p>
 
                     <p>Duis orci lacus, hendrerit ac leo lobortis, faucibus volutpat elit. Donec convallis enim luctus ex hendrerit, sit amet viverra urna tincidunt. Nullam eleifend libero non leo pretium, ac auctor ipsum sollicitudin. Duis in elementum tortor, in suscipit eros.</p>
@@ -79,8 +86,11 @@
                                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Escribe un asunto a tu mensaje">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                    <label for="exampleFormControlTextarea1">Escribe aquí tu mensaje</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Lanzar botella al mar</button>
                                 </div>
                             </form>
                         </div>
@@ -125,19 +135,27 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p> 
             </div>
             <hr>
-            <div class="container lead " id="testimonios">
-                <h2>Testimonios</h2>
-                <blockquote class="blockquote">
-                    <p>During the summer, our rabbit, Tonto, began to have severe redness and itching on his belly and feet. Through diagnostic testing, we learned that Tonto is severely allergic to over a dozens kinds of grass pollens. We've now been doing allergy injections for several months, and his itching and redness have nearly gone away.</p>
-                    <footer class="blockquote-footer">Jane H.</footer>
-                </blockquote>
-                <blockquote class="blockquote">
-                    <p>When Samantha, our Siamese cat, began sleeping all the time and urinating excessively, we brought her to see the specialists at Wisdom. After running a blood test, Dr. Winthrop confirmed what we all feared - Samantha was showing signs of diabetes. The doctor put us on a daily routine to provide Samantha insulin injections, and showed us how to administer the shots.</p>
-                    <footer class="blockquote-footer">The McPhersons</footer>
-                </blockquote>
-            </div>
 
         </div><!-- content container -->
+
+        <!--footer-->
+        <!-- Footer -->
+        <footer class="page-footer font-small bg-primary page-footer-dark mt-5">
+            <!-- Footer Elements -->
+            <div class="container">
+                <!-- Grid row-->
+                <div class="row">
+                    <!--Lugar para los iconos/lins/info footer-->
+                </div>
+                <!-- Grid row-->
+            </div>
+            <!-- Footer Elements -->
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">© 2020 Copyright
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
 
         <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
         <script src="js/popper.min.js"></script>
