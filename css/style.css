@@ -7,6 +7,13 @@ turquesa: 61c9a8
 rojo pastel: c65e67
 */
 
+body {
+  background-color: #ffeedb;
+}
+
+/* #formulario {
+  background-color: #ed9b40;
+} */
 
 .icon {
     display: block;
@@ -70,7 +77,7 @@ rojo pastel: c65e67
 }
 
 .bg-primary {
-    background-color: #61c9a8!important;  
+    background-color: #61c9a8!important;
 /*    EL IMPORTANT SOBRESCRIBE TODO*/
 /*    ATENTO!!!! aqui estoy modificando un primary class*/
 }
