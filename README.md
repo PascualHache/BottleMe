@@ -7,6 +7,7 @@ PENDING FEATURES PARA ENTREGA BOOTSTRAP:
 
 PENDING FEATURES:
 -Casilla de seleccionar calendario
+-Para formulario de login: Jquery validation
 
 BUGS:
 Al contraer el ancho de la pantalla al mínimo, el menú de verticaliza y 'overlap' el primer texto de la página
