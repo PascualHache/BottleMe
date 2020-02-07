@@ -1,164 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <title>BottleMe</title>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>BottleMe</title>
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/validation.js"></script>
 
-    <body data-spy="scroll" data-target="#navbar-site" data-offset="80">
+</head>
 
-        <style>
-            body {
-                position: relative;
-                padding-top: 80px;
-            }
-        </style>
+<body data-spy="scroll" data-target="#navbar-site" data-offset="80">
+  <style>
+  body {
+    position: relative;
+    padding-top: 80px;
+  }
+  </style>
 
-        <nav id="navbar-site" class="fixed-top navbar navbar-dark bg-primary navbar-expand-sm">
-            <div class="container">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#messageme">BottleMe</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#howto">¿Cómo funciona?</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#aboutus">¿Quieres saber más?</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#colaboraciones">Apoya a BottleMe</a></li>
-                </ul><!-- navbar-nav -->
-                <div class="login-container">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Usuario" name="username">
-                        <input type="text" placeholder="Contraseña" name="psw">
-                        <button type="submit">Accede</button>
-                    </form>
-                </div><!--  login input fields-->
-            </div><!-- container -->
-        </nav>
+  <nav id="navbar-site" class="fixed-top navbar navbar-dark bg-primary navbar-expand-sm">
+    <div class="container">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#messageme">BottleMe</a></li>
+        <li class="nav-item"><a class="nav-link" href="#howto">¿Cómo funciona?</a></li>
+        <li class="nav-item"><a class="nav-link" href="#aboutus">¿Quieres saber más?</a></li>
+        <li class="nav-item"><a class="nav-link" href="#colaboraciones">Apoya a BottleMe</a></li>
+      </ul><!-- navbar-nav -->
+      <div class="login-container">
+        <form action="/action_page.php">
+          <input type="text" id="user" placeholder="Usuario" name="username" pattern="[A-za-z]{4,15}" title="Campo no valido" required><!-- login name -->
+          <input type="text" id="pswd" placeholder="Contraseña" name="psw" required><!-- login pswd -->
+          <button type="submit" id="enviar">Accede</button>
+        </form><!-- login Bttn -->
+      </div><!--  login input fields-->
+    </div><!-- container -->
+  </nav>
 
-        <div class="container">
+  <div class="container">
+    <p id="mensajeError"></p>
+    <div class="container" id="messageme">
+      <div class="row justify-content-center py-5">
+        <img class="icon layout-icon" src="img/botella.svg" alt="icon bottle">
+        <h2 class="layout-title">¡BottleMe!</h2>
+        <img class="icon layout-icon" src="img/botella.svg" alt="icon bottle">
 
-            <div class="container" id="messageme">
-                <div class="row justify-content-center py-5">
-                    <img class="icon layout-icon" src="img/botella.svg" alt="icon bottle">
-                    <h2 class="layout-title">¡BottleMe!</h2>
-                    <img class="icon layout-icon" src="img/botella.svg" alt="icon bottle">
-
+      </div>
+      <div class="pb-5 text-center">
+        <row class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-6 col-offset-3">
+          <h3>Escribe tu mensaje, programa la fecha de entrega y conversa con tu yo del pasado:</h3>
+        </row>
+      </div>
+      <div class="layout-multicolumn container">
+        <div class="row justify-content-center" >
+          <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-6 col-offset-3" id="formulario">
+            <form>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" pattern="[A-za-z]{4,15}" required>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Fecha de entrega</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>No es un select, buscar calendario</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="pb-5 text-center">
-                  <row class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-6 col-offset-3">
-                    <h3>Escribe tu mensaje, programa la fecha de entrega y conversa con tu yo del pasado:</h3>
-                  </row>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect2">Plantilla de mensaje</label>
+                    <select class="form-control" id="exampleFormControlSelect2">
+                      <option>Ninguno</option>
+                      <option>Consigue tu meta</option>
+                      <option>No future?</option>
+                      <option>Nosferatu</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="layout-multicolumn container">
-                    <div class="row justify-content-center" >
-                        <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-6 col-offset-3" id="formulario">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Fecha de entrega</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>No es un select, buscar calendario</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Plantilla de mensaje</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>Ninguno</option>
-                                                <option>Consigue tu meta</option>
-                                                <option>No future?</option>
-                                                <option>Nosferatu</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Asunto</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Escribe un asunto a tu mensaje">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Escribe aquí tu mensaje</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Lanzar botella al mar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="container py-5" id="howto">
-                <h2>¿Cómo funciona?</h2>
-                <section>
-                    <p>BottleMe te permite mandarle mensajes a tu yo del futuro o, lo que es lo mismo, recibir un mensaje de tu yo del pasado. El funcionamiento es muy sencillo: escribe un mensaje, programa la fecha de entrega, introduce tu correo y envíalo. Recibirás un mensaje de verificación en tu email. Verifica que eres tu para poder recibir tu mensaje. Si no sabes como empezar a redactar, utiliza alguna de las plantillas creadas por especialistas. Hablate a la largo del tiempo, ponte un reto, márcate un objetivo o simplemente explícate cómo te sientes.</p>
-                </section>
-                <section>
-                    <h3>[aquí va un video]</h3>
-                </section>
-            </div>
-            <hr>
-            <div class="container py-5" id="aboutus">
-                <h2>¿Quieres saber más?</h2>
-                <section>
-                    <p>¿Por que mandarme una carta a mi mismo? Numerosos expertos coinciden en destacar las ventajas de escribirse una carta a uno mismo. Dicho ejercicio permite tomar dimensión de nuestros progresos, reforzar y valorar nuestras decisiones e invita a no olvidar de dónde venimos y que nos ha hecho ser así. Su técnica se utiliza en coaching, mentoring, consultas psicológicas, tratamiento de adicciones, teniendo gran impacto en los avances de los participantes. Es interesante estar relajado antes de comenzar a redactar y visualizar qué sentido puede tener para ti recibir una carta de tu voz enmarcada en un tiempo pasado.
-                    </p>
-                </section>
-            </div>
-            <hr>
-            <div class="container py-5" id="colaboraciones">
-                <h2>Apoya a BottleMe</h2>
-                <article id="page-multicolumn" class="page section py-2" >
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
-                    <div class="row justify-content-center text-center">
-                        <section class="col-md-4 col-sm-12">
-                            <h3>Brand A</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
-                        </section>
-                        <section class="col-md-4 col-sm-12">
-                            <h3>Brand B</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
-                        </section>
-                        <section class="col-md-4 col-sm-12">
-                            <h3>Brand C</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
-                        </section>
-                    </div>
-                </article>
-            </div>
-        </div><!-- content container -->
+              </div>
+              <div class="form-group">
+                <label for="asunto">Asunto</label>
+                <input type="text" class="form-control" id="asunto" placeholder="Escribe un asunto a tu mensaje" required>
+              </div>
+              <div class="form-group">
+                <label for="mensaje">Escribe aquí tu mensaje</label>
+                <textarea class="form-control" id="redactado" rows="10" required></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" id="lanzaMar" class="btn btn-primary">Lanzar botella al mar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container py-5" id="howto">
+      <h2>¿Cómo funciona?</h2>
+      <section>
+        <p>BottleMe te permite mandarle mensajes a tu yo del futuro o, lo que es lo mismo, recibir un mensaje de tu yo del pasado. El funcionamiento es muy sencillo: escribe un mensaje, programa la fecha de entrega, introduce tu correo y envíalo. Recibirás un mensaje de verificación en tu email. Verifica que eres tu para poder recibir tu mensaje. Si no sabes como empezar a redactar, utiliza alguna de las plantillas creadas por especialistas. Hablate a la largo del tiempo, ponte un reto, márcate un objetivo o simplemente explícate cómo te sientes.</p>
+      </section>
+      <section>
+        <h3>[aquí va un video]</h3>
+      </section>
+    </div>
+    <hr>
+    <div class="container py-5" id="aboutus">
+      <h2>¿Quieres saber más?</h2>
+      <section>
+        <p>¿Por que mandarme una carta a mi mismo? Numerosos expertos coinciden en destacar las ventajas de escribirse una carta a uno mismo. Dicho ejercicio permite tomar dimensión de nuestros progresos, reforzar y valorar nuestras decisiones e invita a no olvidar de dónde venimos y que nos ha hecho ser así. Su técnica se utiliza en coaching, mentoring, consultas psicológicas, tratamiento de adicciones, teniendo gran impacto en los avances de los participantes. Es interesante estar relajado antes de comenzar a redactar y visualizar qué sentido puede tener para ti recibir una carta de tu voz enmarcada en un tiempo pasado.
+        </p>
+      </section>
+    </div>
+    <hr>
+    <div class="container py-5" id="colaboraciones">
+      <h2>Apoya a BottleMe</h2>
+      <article id="page-multicolumn" class="page section py-2" >
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+        <div class="row justify-content-center text-center">
+          <section class="col-md-4 col-sm-12">
+            <h3>Brand A</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+          </section>
+          <section class="col-md-4 col-sm-12">
+            <h3>Brand B</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+          </section>
+          <section class="col-md-4 col-sm-12">
+            <h3>Brand C</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+          </section>
+        </div>
+      </article>
+    </div>
+  </div><!-- content container -->
 
-        <!--footer-->
-        <!-- Footer -->
-        <footer class="page-footer font-small bg-primary page-footer-dark mt-5">
-            <!-- Footer Elements -->
-            <div class="container">
-                <!-- Grid row-->
-                <div class="row">
-                    <!--Lugar para los iconos/lins/info footer-->
-                </div>
-                <!-- Grid row-->
-            </div>
-            <!-- Footer Elements -->
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2020 Copyright
-            </div>
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
-
-        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-
-    </body>
+  <!--footer-->
+  <footer class="page-footer font-small bg-primary page-footer-dark mt-5">
+    <!-- Footer Elements -->
+    <div class="container">
+      <!-- Grid row-->
+      <div class="row">
+        <!--Lugar para los iconos/lins/info footer-->
+      </div>
+      <!-- Grid row-->
+    </div>
+    <!-- Footer Elements -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</body>
 </html>

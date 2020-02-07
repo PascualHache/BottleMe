@@ -7,13 +7,9 @@ turquesa: 61c9a8
 rojo pastel: c65e67
 */
 
-body {
-  background-color: #ffeedb;
+.error {
+  border: solid 2px #FF0000;
 }
-
-/* #formulario {
-  background-color: #ed9b40;
-} */
 
 .icon {
     display: block;
