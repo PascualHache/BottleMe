@@ -79,15 +79,17 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="asunto">Asunto</label>
+                <label for="asunto">Asunto*</label>
                 <input type="text" class="form-control" id="asunto" placeholder="Escribe un asunto a tu mensaje" required>
                 <div id="IssueFormError" class="val_error"></div>
               </div>
               <div class="form-group">
                 <label for="mensaje">Escribe aquí tu mensaje*</label>
                 <textarea class="form-control" id="redactado" rows="10" required></textarea>
-                <div id="camposObligatorios" class="">(*)Campos obligatorios</div>
-                <div id="MsnFormError" class="val_error"></div>
+                <div class="row">
+                  <div id="MsnFormError" class="col-6 val_error"></div>
+                  <div id="camposObligatorios" class="col-6 text-right">(*)Campos obligatorios</div>
+                </div>
               </div>
               <div class="form-group">
                 <button type="submit" id="lanzaMar" class="btn btn-primary">Lanzar botella al mar</button>
