@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,12 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link href="dist/the-datepicker.css" rel="stylesheet" />
   <title>BottleMe</title>
   <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="dist/the-datepicker.js"></script>
   <script src="js/validation.js"></script>
-
 </head>
 
 <body data-spy="scroll" data-target="#navbar-site" data-offset="80">
@@ -26,8 +28,10 @@
       </ul><!-- navbar-nav -->
       <div class="login-container">
         <form action="/action_page.php">
-          <input type="text" id="user" placeholder="Usuario" name="username" pattern="[A-za-z]{4,15}" required><!-- login name -->
-          <input type="password" id="pswd" placeholder="Contraseña" name="psw" pattern="[A-za-z0-9]{4,15}" required><!-- login pswd -->
+          <input type="text" id="user" placeholder="Usuario" name="username" pattern="[A-za-z]{4,15}" required>
+          <!-- login name -->
+          <input type="password" id="pswd" placeholder="Contraseña" name="psw" pattern="[A-za-z0-9]{4,15}" required>
+          <!-- login pswd -->
           <button type="submit" id="login">Accede</button>
         </form>
         <div id="LoginError" class="val_error"></div><!-- login Bttn -->
@@ -45,25 +49,31 @@
       </div>
       <div class="container pb-5 text-center">
         <row class="row justify-content-center">
-          <h3 class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-6 col-offset-3" id="maintext">Escribe tu mensaje, programa la fecha de entrega y conversa con tu yo del pasado</h3>
+          <h3 class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-6 col-offset-3" id="maintext">Escribe tu
+            mensaje, programa la fecha de entrega y conversa con tu yo del pasado</h3>
         </row>
       </div>
       <div class="layout-multicolumn container">
-        <div class="row justify-content-center" >
+        <div class="row justify-content-center">
           <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-6 col-offset-3" id="formulario">
             <form>
               <div class="form-group">
                 <label for="email">Correo electrónico*</label>
-                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$" required>
+                <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com"
+                  pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$"
+                  required>
                 <div id="MailFormError" class="val_error"></div>
               </div>
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Fecha de entrega</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <!-- <select class="form-control" id="exampleFormControlSelect1">
                       <option>No es un select, buscar calendario</option>
-                    </select>
+                    </select> -->
+                    <div id="calendar-wrapper">
+                      <input type="text" id="calendar" placeholder="Selecciona una fecha">
+                    </div>
                   </div>
                 </div>
                 <div class="col-6">
@@ -80,7 +90,8 @@
               </div>
               <div class="form-group">
                 <label for="asunto">Asunto*</label>
-                <input type="text" class="form-control" id="asunto" placeholder="Escribe un asunto a tu mensaje" required>
+                <input type="text" class="form-control" id="asunto" placeholder="Escribe un asunto a tu mensaje"
+                  required>
                 <div id="IssueFormError" class="val_error"></div>
               </div>
               <div class="form-group">
@@ -104,7 +115,12 @@
       <div class="container pt-3">
         <h2 class="pt-5">¿Cómo funciona?</h2>
         <section>
-          <p>BottleMe te permite mandarle mensajes a tu yo del futuro o, lo que es lo mismo, recibir un mensaje de tu yo del pasado. El funcionamiento es muy sencillo: escribe un mensaje, programa la fecha de entrega, introduce tu correo y envíalo. Recibirás un mensaje de verificación en tu email. Verifica que eres tu para poder recibir tu mensaje. Si no sabes como empezar a redactar, utiliza alguna de las plantillas creadas por especialistas. Hablate a la largo del tiempo, ponte un reto, márcate un objetivo o simplemente explícate cómo te sientes.</p>
+          <p>BottleMe te permite mandarle mensajes a tu yo del futuro o, lo que es lo mismo, recibir un mensaje de tu yo
+            del pasado. El funcionamiento es muy sencillo: escribe un mensaje, programa la fecha de entrega, introduce
+            tu correo y envíalo. Recibirás un mensaje de verificación en tu email. Verifica que eres tu para poder
+            recibir tu mensaje. Si no sabes como empezar a redactar, utiliza alguna de las plantillas creadas por
+            especialistas. Hablate a la largo del tiempo, ponte un reto, márcate un objetivo o simplemente explícate
+            cómo te sientes.</p>
         </section>
         <section>
           <h3>[aquí va un video]</h3>
@@ -116,7 +132,12 @@
       <div class="container pt-3">
         <h2 class="pt-5">¿Quieres saber más?</h2>
         <section>
-          <p>¿Por que mandarme una carta a mi mismo? Numerosos expertos coinciden en destacar las ventajas de escribirse una carta a uno mismo. Dicho ejercicio permite tomar dimensión de nuestros progresos, reforzar y valorar nuestras decisiones e invita a no olvidar de dónde venimos y que nos ha hecho ser así. Su técnica se utiliza en coaching, mentoring, consultas psicológicas, tratamiento de adicciones, teniendo gran impacto en los avances de los participantes. Es interesante estar relajado antes de comenzar a redactar y visualizar qué sentido puede tener para ti recibir una carta de tu voz enmarcada en un tiempo pasado.
+          <p>¿Por que mandarme una carta a mi mismo? Numerosos expertos coinciden en destacar las ventajas de escribirse
+            una carta a uno mismo. Dicho ejercicio permite tomar dimensión de nuestros progresos, reforzar y valorar
+            nuestras decisiones e invita a no olvidar de dónde venimos y que nos ha hecho ser así. Su técnica se utiliza
+            en coaching, mentoring, consultas psicológicas, tratamiento de adicciones, teniendo gran impacto en los
+            avances de los participantes. Es interesante estar relajado antes de comenzar a redactar y visualizar qué
+            sentido puede tener para ti recibir una carta de tu voz enmarcada en un tiempo pasado.
           </p>
         </section>
       </div>
@@ -125,20 +146,24 @@
     <div class="container py-5" id="colaboraciones">
       <div class="container pt-3">
         <h2>Apoya a BottleMe</h2>
-        <article id="page-multicolumn" class="page section py-2" >
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+        <article id="page-multicolumn" class="page section py-2">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales.
+            Aenean porta nisl at nibh efficitur tincidunt.</p>
           <div class="row justify-content-center text-center">
             <section class="col-md-4 col-sm-12">
               <h3>Brand A</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales.
+                Aenean porta nisl at nibh efficitur tincidunt.</p>
             </section>
             <section class="col-md-4 col-sm-12">
               <h3>Brand B</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales.
+                Aenean porta nisl at nibh efficitur tincidunt.</p>
             </section>
             <section class="col-md-4 col-sm-12">
               <h3>Brand C</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales. Aenean porta nisl at nibh efficitur tincidunt.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor neque vel venenatis sodales.
+                Aenean porta nisl at nibh efficitur tincidunt.</p>
             </section>
           </div>
         </article>
@@ -164,4 +189,5 @@
   </footer>
   <!-- Footer -->
 </body>
+
 </html>

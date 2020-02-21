@@ -1,137 +1,155 @@
-window.onload=iniciar;
+window.onload = iniciar;
+window.onload = loadCalendar;
 
-var nombreError=false;
-var pswdError=false;
-var mailError=false;
-var asuntoError=false;
-var mensajeError=false;
+var nombreError = false;
+var pswdError = false;
+var mailError = false;
+var asuntoError = false;
+var mensajeError = false;
+var datepicker;
 
-function iniciar(){
-  document.getElementById("login").addEventListener('click',validarLogIn, false);
-  document.getElementById("lanzaMar").addEventListener('click',validarMensaje, false);
+function loadCalendar() {
+  // Selecting calendar Date //
+  const input = document.getElementById("calendar");
+  datepicker = new TheDatepicker.Datepicker(input);
+  // configCalendar();
+  datepicker.options.setDropdownItemsLimit(2020, 2100);
+  datepicker.render();
 }
 
-function validaNombre(){
+function configCalendar() {
+  let a = new Date().getFullYear().toString();
+  console.log(a);
+  datepicker.options.setDropdownItemsLimit(2020, 2100);
+  return datepicker;
+}
+
+function iniciar() {
+  document.getElementById("login").addEventListener('click', validarLogIn, false);
+  document.getElementById("lanzaMar").addEventListener('click', validarMensaje, false);
+}
+
+function validaNombre() {
   var elemento = document.getElementById("user");
-  if (!elemento.checkValidity()){
-    if(elemento.validity.valueMissing){
-      nombreError=true;
-      error(elemento, "LoginError","Debe introducir un usuario")
+  if (!elemento.checkValidity()) {
+    if (elemento.validity.valueMissing) {
+      nombreError = true;
+      error(elemento, "LoginError", "Debe introducir un usuario")
     }
-    else if(elemento.validity.patternMismatch){
-      nombreError=true;
+    else if (elemento.validity.patternMismatch) {
+      nombreError = true;
       error(elemento, "LoginError", "El nombre debe tener entre 4 y 15 caracteres")
     }
-    else{
-      nombreError=false;
+    else {
+      nombreError = false;
     }
     return false;
   }
   return true;
 }
 
-function validaPassword(){
+function validaPassword() {
   var elemento = document.getElementById("pswd");
-  if (!elemento.checkValidity()){
-    if(elemento.validity.valueMissing || elemento.validity.patternMismatch){
-      pswdError=true;
-      error(elemento,"LoginError","Debe introducir una contraseña entre 4 y 15 caracteres")
-    } else{
-      pswdError=false;
+  if (!elemento.checkValidity()) {
+    if (elemento.validity.valueMissing || elemento.validity.patternMismatch) {
+      pswdError = true;
+      error(elemento, "LoginError", "Debe introducir una contraseña entre 4 y 15 caracteres")
+    } else {
+      pswdError = false;
     }
     return false;
   }
   return true;
 }
 
-function validaEmail(){
+function validaEmail() {
   var elemento = document.getElementById("email");
-  if (!elemento.checkValidity()){
-    if(elemento.validity.valueMissing){
-      mailError=true;
-      error(elemento, "MailFormError","Debe introducir un email")
+  if (!elemento.checkValidity()) {
+    if (elemento.validity.valueMissing) {
+      mailError = true;
+      error(elemento, "MailFormError", "Debe introducir un email")
     }
-    else if(elemento.validity.patternMismatch){
-      mailError=true;
+    else if (elemento.validity.patternMismatch) {
+      mailError = true;
       error(elemento, "MailFormError", "Introduce un email con formato válido")
-    } else{
-      mailError=false;
+    } else {
+      mailError = false;
     }
     return false;
   }
   return true;
 }
 
-function validaAsunto(){
+function validaAsunto() {
   var elemento = document.getElementById("asunto");
-  if (!elemento.checkValidity()){
-    if(elemento.validity.valueMissing){
-      asuntoError=true;
-      error(elemento, "IssueFormError","Debe introducir un asunto")
-    } else{
-      asuntoError=false;
+  if (!elemento.checkValidity()) {
+    if (elemento.validity.valueMissing) {
+      asuntoError = true;
+      error(elemento, "IssueFormError", "Debe introducir un asunto")
+    } else {
+      asuntoError = false;
     }
     return false;
   }
   return true;
 }
 
-function validaMensaje(){
+function validaMensaje() {
   var elemento = document.getElementById("redactado");
-  if (!elemento.checkValidity()){
-    if(elemento.validity.valueMissing){
-      mensajeError=true;
-      error(elemento, "MsnFormError","Debe introducir un asunto")
-    } else{
-      mensajeError=false;
+  if (!elemento.checkValidity()) {
+    if (elemento.validity.valueMissing) {
+      mensajeError = true;
+      error(elemento, "MsnFormError", "Debe introducir un asunto")
+    } else {
+      mensajeError = false;
     }
     return false;
   }
   return true;
 }
 
-function validarLogIn(e){
+function validarLogIn(e) {
   borrarError(e);
   validaPassword();
   validaNombre();
-  if (!nombreError && !pswdError && confirm("Si todos los datos son correctos accederas a tu perfil"))
-  {
+  if (!nombreError && !pswdError && confirm("Si todos los datos son correctos accederas a tu perfil")) {
     return true
-  }else{
+  } else {
     e.preventDefault(); //evita que printe el mensaje flotante por defecto de campo
     return false;
   }
 }
 
-function validarMensaje(e){
+function validarMensaje(e) {
   borrarError(e);
   validaMensaje();
   validaAsunto();
   validaEmail();
-  if (!mailError && !asuntoError && !mensajeError && confirm("Pulsa aceptar para mandar la botella al mar"))
-  {
+  if (!mailError && !asuntoError && !mensajeError && confirm("Pulsa aceptar para mandar la botella al mar")) {
     return true
-  }else{
+  } else {
     e.preventDefault(); //evita que printe el mensaje flotante por defecto de campo
     return false;
   }
 }
 
-function error(elemento, nombreErrorID, mensaje){
+function error(elemento, nombreErrorID, mensaje) {
   document.getElementById(nombreErrorID).innerHTML = mensaje;
   elemento.className = "error";
   elemento.focus();
 }
 
-function borrarError(elemento){
-  errorFormIDlist = ["MsnFormError","IssueFormError","MailFormError","LoginError"];
-  for(var p=0; p<errorFormIDlist.length;p++){
+function borrarError(elemento) {
+  errorFormIDlist = ["MsnFormError", "IssueFormError", "MailFormError", "LoginError"];
+  for (var p = 0; p < errorFormIDlist.length; p++) {
     document.getElementById(errorFormIDlist[p]).innerHTML = "";
   }
-  for(var n=0; n<document.forms.length;n++){
+  for (var n = 0; n < document.forms.length; n++) {
     var formulario = document.forms[n];
-    for(var i=0; i<formulario.elements.length;i++){
-      formulario.elements[i].className="";
+    for (var i = 0; i < formulario.elements.length; i++) {
+      formulario.elements[i].className = "";
     }
   }
 }
+
+

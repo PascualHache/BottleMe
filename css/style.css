@@ -12,10 +12,6 @@ rojo pastel: c65e67
   border: solid 2px #FF0000;
 }
 
-/* #camposObligatorios{
-  text-align: right;
-} */
-
 .val_error {
   color: #FF0000;
   font-size: 0.8em;
